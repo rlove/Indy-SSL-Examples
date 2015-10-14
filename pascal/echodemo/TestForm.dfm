@@ -90,7 +90,6 @@ object Form2: TForm2
   object IdTCPServer1: TIdTCPServer
     Bindings = <>
     DefaultPort = 0
-    OnConnect = IdTCPServer1Connect
     Left = 80
     Top = 96
   end

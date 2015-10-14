@@ -29,7 +29,6 @@ type
     procedure Button5Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure IdTCPServer1Connect(AContext: TIdContext);
     procedure IdSSLIOHandlerSocketOpenSSL1Status(ASender: TObject;
       const AStatus: TIdStatus; const AStatusText: string);
 
@@ -37,6 +36,7 @@ type
     { Private declarations }
     procedure ServerExecute(AContext: TIdContext);
     procedure GetPassword(var Password: string);
+    procedure ServerConnect(AContext: TIdContext);
   public
     { Public declarations }
   end;
@@ -67,6 +67,7 @@ begin
 
   IdTCPServer1.DefaultPort := SERVER_PORT;
   IdTCPServer1.IOHandler := IdServerIOHandlerSSLOpenSSL1;
+  IdTCPServer1.OnConnect := ServerConnect;
 
   IdTCPServer1.OnExecute := ServerExecute;
   IdTCPServer1.Active := True;
@@ -124,7 +125,7 @@ begin
    memResults.Lines.Add(AStatusText);
 end;
 
-procedure TForm2.IdTCPServer1Connect(AContext: TIdContext);
+procedure TForm2.ServerConnect(AContext: TIdContext);
 begin
   //These two lines are required to get SSL to work.
   if (AContext.Connection.IOHandler is TIdSSLIOHandlerSocketBase) then
