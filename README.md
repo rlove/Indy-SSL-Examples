@@ -1,7 +1,7 @@
 # Indy-SSL-Examples
 SSL Examples for Indy
 
-Delphi and soon C++ Examples on using OpenSSL with Indy.
+Delphi and  C++ Examples on using OpenSSL with Indy.
 
 Pull Requests are welcome
 
